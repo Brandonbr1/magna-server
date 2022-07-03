@@ -51,6 +51,10 @@ impl BattleEntity for Enemy {
         self.curr_hp
     }
 
+    fn max_hp(&self) -> f64 {
+        self.max_hp
+    }
+
     fn set_hp(&mut self, hp: f64) {
         self.curr_hp = hp;
     }

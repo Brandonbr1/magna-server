@@ -8,6 +8,8 @@ pub trait BattleEntity {
     fn atk(&self) -> f64;
     /// Gets the HP of the entity.
     fn hp(&self) -> f64;
+    /// Gets the max HP of the entity.
+    fn max_hp(&self) -> f64;
     /// Sets the HP of the entity.
     fn set_hp(&mut self, hp: f64);
 
@@ -33,6 +35,10 @@ pub trait BattleEntity {
     /// Gives a specified amount of healing to the entity.
     fn receive_heal(&mut self, heal: f64) {
         let hp = self.hp() + heal;
-        self.set_hp(if hp > self.hp() { self.hp() } else { hp })
+        self.set_hp(if hp > self.max_hp() {
+            self.max_hp()
+        } else {
+            hp
+        })
     }
 }
