@@ -1,10 +1,12 @@
 use self::{enemy_data::ENEMY_DATA_DEPOT, enemy_skills::EnemySkillData};
 
+use super::battle::BattleEntity;
+
 mod enemy_data;
 mod enemy_skills;
 
 /// Represents an enemy's state during a battle.
-struct Enemy {
+pub struct Enemy {
     pub max_hp: f64,
     pub curr_hp: f64,
     pub atk: f64,
@@ -37,5 +39,19 @@ impl Enemy {
             skill_special: data.skill_special,
             special_cooldown: data.special_cooldown,
         })
+    }
+}
+
+impl BattleEntity for Enemy {
+    fn atk(&self) -> f64 {
+        self.atk
+    }
+
+    fn hp(&self) -> f64 {
+        self.curr_hp
+    }
+
+    fn set_hp(&mut self, hp: f64) {
+        self.curr_hp = hp;
     }
 }

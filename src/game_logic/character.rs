@@ -4,7 +4,10 @@ use self::{
     character_stats::{get_total_atk, get_total_hp},
 };
 
-use super::{battle::battle_action::BattleAction, weapon::WeaponGrid};
+use super::{
+    battle::{battle_action::BattleAction, BattleEntity},
+    weapon::WeaponGrid,
+};
 
 mod character_data;
 mod character_skills;
@@ -55,6 +58,20 @@ impl CharacterBattle {
         character.atk = atk;
 
         character
+    }
+}
+
+impl BattleEntity for CharacterBattle {
+    fn atk(&self) -> f64 {
+        self.atk
+    }
+
+    fn hp(&self) -> f64 {
+        self.curr_hp
+    }
+
+    fn set_hp(&mut self, hp: f64) {
+        self.curr_hp = hp;
     }
 }
 

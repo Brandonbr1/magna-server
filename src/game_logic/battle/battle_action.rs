@@ -1,3 +1,5 @@
+use super::BattleEntity;
+
 /// Represents an atomic action that a player character or enemy can execute during battle.
 #[derive(Clone, Copy)]
 pub enum BattleAction {
@@ -9,8 +11,4 @@ pub enum BattleAction {
 
     /// Heals all allies based on a specified multiplier.
     HealAll { multiplier: f64 },
-}
-
-impl BattleAction {
-    // pub fn execute(&self, state: BattleState) -> BattleState {}
 }
