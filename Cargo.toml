@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 phf = { version = "0.10", features = ["macros"] }
 rand = "0.8"
+anyhow = "1.0"
